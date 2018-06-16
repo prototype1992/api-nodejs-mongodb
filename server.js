@@ -27,16 +27,19 @@ app.get('/', (req, res) => {
     res.send('Hello API');
 });
 
+// получение всех артистов
 app.get('/artists', (req, res) => {
     res.send(artists);
 });
 
+// получение артиста по ид
 app.get('/artists/:id', (req, res) => {
     res.send(
-        artists.find(item => item.id === parseInt(req.params.id))
+        artists.find(item => item.id === +req.params.id)
     );
 });
 
+// добавление артиста
 app.post('/artists', (req, res) => {
     let newArtist = {
         id: Date.now(),
@@ -44,6 +47,13 @@ app.post('/artists', (req, res) => {
     };
     artists.push(newArtist);
     res.send(newArtist);
+});
+
+// изменение артиста
+app.put('/artists/:id', (req, res) => {
+    let artist = artists.find(item => item.id === +req.params.id);
+    artist.name = req.body.name;
+    res.send(artist);
 });
 
 app.listen(5001, () => console.log('Listen port 5001'));
