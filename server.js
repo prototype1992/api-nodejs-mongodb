@@ -1,6 +1,12 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 let artists = [
     {
@@ -26,8 +32,18 @@ app.get('/artists', (req, res) => {
 });
 
 app.get('/artists/:id', (req, res) => {
-    let artist = artists.find(item => item.id === parseInt(req.params.id))
-    res.send(artist);
+    res.send(
+        artists.find(item => item.id === parseInt(req.params.id))
+    );
+});
+
+app.post('/artists', (req, res) => {
+    let newArtist = {
+        id: Date.now(),
+        name: req.body.name
+    };
+    artists.push(newArtist);
+    res.send(newArtist);
 });
 
 app.listen(5001, () => console.log('Listen port 5001'));
