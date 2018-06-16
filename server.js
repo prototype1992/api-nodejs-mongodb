@@ -53,7 +53,13 @@ app.post('/artists', (req, res) => {
 app.put('/artists/:id', (req, res) => {
     let artist = artists.find(item => item.id === +req.params.id);
     artist.name = req.body.name;
-    res.send(artist);
+    res.sendStatus(200);
+});
+
+// удаление артиста
+app.delete('/artists/:id', (req, res) => {
+    artists = artists.filter(item => item.id !== +req.params.id);
+    res.sendStatus(200);
 });
 
 app.listen(5001, () => console.log('Listen port 5001'));
