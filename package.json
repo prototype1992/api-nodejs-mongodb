@@ -1,0 +1,23 @@
+{
+  "name": "api-nodejs-mongodb",
+  "version": "1.0.0",
+  "description": "Простое API на NodeJS и MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prototype1992/api-nodejs-mongodb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prototype1992/api-nodejs-mongodb/issues"
+  },
+  "homepage": "https://github.com/prototype1992/api-nodejs-mongodb#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
